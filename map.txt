@@ -1,0 +1,47 @@
+ Keystore password: f454e4ea8dcb4a17ad02ffa569446a6c
+  Key alias:         QGJhc2VsYmFyZ2hvdXRoL2RyYWdnYWJsZQ==
+  Key password:      cdf241c71b264ea2b5b07c4c65022713
+
+
+
+  ============================
+  Keystore provider: SUN
+
+Your keystore contains 1 entry
+
+Alias name: qgjhc2vsymfyz2hvdxrol2ryywdnywjszq==
+Creation date: Nov 18, 2019
+Entry type: PrivateKeyEntry
+Certificate chain length: 1
+Certificate[1]:
+Owner: CN=recycle.com, OU=, O=, L=, ST=, C=US
+Issuer: CN=recycle.com, OU=, O=, L=, ST=, C=US
+Serial number: 6c2b1c38
+Valid from: Mon Nov 18 12:13:23 EET 2019 until: Fri Apr 05 13:13:23 EEST 2047
+Certificate fingerprints:
+         SHA1: BA:46:53:9F:9E:EB:54:A4:96:C0:DF:C7:74:30:C6:0E:65:55:A6:86
+         SHA256: D8:3A:7E:E9:7E:AB:26:CE:BC:9C:C4:EA:10:56:AB:6D:D2:BD:8A:18:10:CA:C5:C9:CE:1E:16:49:68:C3:12:4D
+Signature algorithm name: SHA256withRSA
+Subject Public Key Algorithm: 2048-bit RSA key
+Version: 3
+
+Extensions: 
+
+#1: ObjectId: 2.5.29.14 Criticality=false
+SubjectKeyIdentifier [
+KeyIdentifier [
+0000: 87 15 9A 79 78 60 45 48   47 C1 C0 CF E2 A9 7C BC  ...yx`EHG.......
+0010: 9F F4 28 25                                        ..(%
+]
+]
+
+
+
+*******************************************
+*******************************************
+
+
+
+Warning:
+The JKS keystore uses a proprietary format. It is recommended to migrate to PKCS12 which is an industry standard format using "keytool -importkeystore -srckeystore draggable.jks -destkeystore draggable.jks -deststoretype pkcs12".
+

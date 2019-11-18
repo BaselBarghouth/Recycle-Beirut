@@ -1,0 +1,34 @@
+{
+  "expo": {
+    "name": "Recycle-Beirut",
+    "slug": "Recycle-Beirut",
+    "privacy": "public",
+    "sdkVersion": "35.0.0",
+    "platforms": ["ios", "android", "web"],
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": ["**/*"],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "recycle.com",
+      "config": {
+        "googleMapsApiKey": "AIzaSyBiR5VBpoDzXKg-T2z7-y1AjxK113edvzM"
+      }
+    },
+    "android": {
+      "package": "recycle.com",
+      "config": {
+        "googleMaps": { "apiKey": "AIzaSyA4ZQ0QubjGN52P1EdBYpzj1a2McHM8wKI" }
+      }
+    }
+  }
+}
