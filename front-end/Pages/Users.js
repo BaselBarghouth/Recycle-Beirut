@@ -25,7 +25,7 @@ class Users extends React.Component {
     return (
       <View style={styles.container}>
         <View style={styles.top}>
-          <Text style={styles.text}>EDITTING USER</Text>
+          <Text style={styles.text}>EDIT USERS</Text>
         </View>
         <ScrollView>
           {this.state.users.map((user, index) => {

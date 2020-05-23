@@ -32,6 +32,17 @@ class Home extends Component {
     this.setState({ user });
   }
   onPress = () => {
+    Alert.alert(
+      "Thanks",
+      "Thanks for your cooperation!",
+      [
+        {
+          text: "Ok",
+          style: "default"
+        }
+      ],
+      { cancelable: false }
+    );
     let today = new Date();
     let dd = String(today.getDate()).padStart(2, "0");
     let mm = String(today.getMonth() + 1).padStart(2, "0"); //January is 0!
@@ -154,11 +165,11 @@ class Home extends Component {
             as possible
           </Text>
           <TouchableOpacity>
-            <Image
+            {/* <Image
               resizeMode="contain"
               source={logo}
               style={{ height: 50, width: 50 }}
-            />
+            /> */}
           </TouchableOpacity>
         </View>
       </View>
@@ -201,13 +212,12 @@ const styles = StyleSheet.create({
     left: (width - 0.2 * height) / 2
   },
   text: {
-    width: "60%",
+    width: "80%",
     textAlign: "center",
     color: "white",
     fontFamily: "Futura",
     fontSize: 18,
-    fontWeight: "bold",
-    textAlign: "center"
+    fontWeight: "bold"
   },
   right: {
     position: "absolute",

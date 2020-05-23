@@ -140,7 +140,7 @@ class Signin extends Component {
             <Button
               color="#F7AE21"
               title="SIGN IN"
-              clicked={this.onSubmit}
+              clicked={Actions.Home}
               textColor="white"
             />
             <Button

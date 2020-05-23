@@ -8,6 +8,7 @@ import {
   Modal,
   Text
 } from "react-native";
+import SingleOrderUser from "../Component/SingleOrderUser";
 import SinglePickup from "../Component/SinglePickup";
 import Swipeout from "react-native-swipeout";
 import truckIcon from "../assets/truck.png";
@@ -74,7 +75,7 @@ class Orders extends Component {
         <View style={{ backgroundColor: "#008D78" }}>
           <View
             style={{
-              height: 0.15 * height,
+              height: 0.2 * height,
               backgroundColor: "#F7AE21",
               borderBottomLeftRadius: 30,
               borderBottomRightRadius: 30,
@@ -87,14 +88,80 @@ class Orders extends Component {
                 color: "white",
                 textAlign: "center",
                 fontWeight: "bold",
-                fontSize: 18
+                fontSize: 40,
+                fontFamily: "Futura",
+                marginTop: 10
               }}
             >
-              Pickups
+              PICKUPS
             </Text>
           </View>
         </View>
-        <ScrollView style={{ backgroundColor: "#008D78" }}>
+        <ScrollView style={{ backgroundColor: "#008D78", paddingTop: 20 }}>
+          <SingleOrderUser
+            lolo="HAMRA"
+            date="18/9/2019"
+            price="BILAL HABASH"
+            color="red"
+          />
+          <SingleOrderUser
+            date="30/9/2019"
+            price="AMMER SAAD"
+            color="#6BBD45"
+            lolo="GEITAWI"
+          />
+          <SingleOrderUser
+            lolo="MAZRAA"
+            date="2/10/2019"
+            price="MAJD BSHARA"
+            color="red"
+          />
+
+          <SingleOrderUser
+            lolo="HAMRA"
+            date="6/10/2019"
+            price="AMMER SAAD"
+            color="red"
+          />
+          <SingleOrderUser
+            lolo="MAZRAA"
+            date="9/10/2019"
+            price="MAJD BSHARA"
+            color="#6BBD45"
+          />
+          <SingleOrderUser
+            lolo="DOWN TOWN"
+            date="18/9/2019"
+            price="AMMER SAAD"
+            color="red"
+            lp="center"
+          />
+          <SingleOrderUser
+            lolo="MAZRAA"
+            date="30/9/2019"
+            price="MAJD BSHARA"
+            color="#6BBD45"
+          />
+          <SingleOrderUser
+            lolo="DOWN TOWN"
+            date="2/10/2019"
+            price="MUTAZ DYABIEH"
+            color="red"
+          />
+          <SingleOrderUser
+            lolo="MAZRAA"
+            date="6/10/2019"
+            price=""
+            color="red"
+          />
+          <SingleOrderUser
+            lolo="ACHRAFIEH"
+            date="9/10/2019"
+            price="BILAL HABASH"
+            color="#6BBD45"
+          />
+        </ScrollView>
+        {/* <ScrollView style={{ backgroundColor: "#008D78" }}>
           {this.state.pickup &&
             this.state.pickup.map((pickup, index) => {
               return (
@@ -110,7 +177,7 @@ class Orders extends Component {
                 </Swipeout>
               );
             })}
-        </ScrollView>
+        </ScrollView> */}
         <TouchableOpacity
           onPress={() =>
             this.setState({
@@ -124,12 +191,12 @@ class Orders extends Component {
             right: 0
           }}
         >
-          <Image
+          {/* <Image
             resizeMode="contain"
             resizeMethod="resize"
             source={truckIcon}
             style={{ height: 100, width: 100 }}
-          />
+          /> */}
         </TouchableOpacity>
         <Modal
           transparent={true}

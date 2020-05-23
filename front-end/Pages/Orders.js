@@ -13,18 +13,19 @@ import SingleOrderAdmin from "../Component/SingleOrderAdmin";
 import Swipeout from "react-native-swipeout";
 import truckIcon from "../assets/truck.png";
 import Button from "../Component/Button";
+import SingleOrderAdmin2 from "../Component/SingleOrderAdmin2";
 
 const { width, height } = Dimensions.get("window");
 class Orders extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      orders: []
+      orders: [],
+      isShow: false
     };
   }
   componentDidMount() {
-    console.log(this.props);
-    let orders = fetch(`http://192.168.1.107:5001/orders`, {
+    let orders = fetch(`http://192.168.0.106:5001/orders`, {
       method: "get",
       headers: {
         "Content-Type": "application/json"
@@ -32,6 +33,7 @@ class Orders extends Component {
     })
       .then(response => response.json())
       .then(data => {
+        console.log("=====>", data);
         let orders = data.data.filter(i => i.order_status == "pendding");
         this.setState(
           {
@@ -40,7 +42,7 @@ class Orders extends Component {
           () => console.log(this.state)
         );
       })
-      .catch(err => console.log("err", err));
+      .catch(err => console.log("errjj", err));
   }
   render() {
     const swipeoutBtns = [
@@ -67,13 +69,43 @@ class Orders extends Component {
             title="SEE TRUCK"
             textColor="white"
             style={{ width: 0.7 * width }}
+            clicked={() => this.setState({ isShow: true })}
           />
         </View>
         <ScrollView>
-          {this.state.orders.map((order, index) => {
-            return <SingleOrderAdmin order={order} key={index} />;
-          })}
+          <SingleOrderAdmin name="Saeb" date="1/1/2020" phone="78652351" />
+          <SingleOrderAdmin name="Mazen" date="3/1/2020" phone="89647321" />
+          <SingleOrderAdmin name="Tahseen" date="4/1/2020" phone="76703031" />
+          <SingleOrderAdmin name="Khaled" date="5/1/2020" phone="8185836" />
+          <SingleOrderAdmin name="Ali" date="10/1/2020" phone="77766620" />
+          <SingleOrderAdmin name="Hasan" date="17/1/2020" phone="76543218" />
         </ScrollView>
+        <Modal
+          transparent={true}
+          animationType="slide"
+          visible={this.state.isShow}
+        >
+          <View style={styles.modal}>
+            <TouchableOpacity
+              onPress={() => {
+                this.setState({ isShow: false });
+              }}
+            >
+              <ScrollView>
+                <SingleOrderAdmin2
+                  name="Saeb"
+                  date="1/1/2020"
+                  phone="78652351"
+                />
+                <SingleOrderAdmin2
+                  name="Mazen"
+                  date="3/1/2020"
+                  phone="89647321"
+                />
+              </ScrollView>
+            </TouchableOpacity>
+          </View>
+        </Modal>
       </View>
     );
   }
@@ -101,6 +133,13 @@ const styles = StyleSheet.create({
     textAlign: "center"
   },
   button: {
+    justifyContent: "center",
+    alignItems: "center"
+  },
+  modal: {
+    backgroundColor: "#008D78",
+    height,
+    width,
     justifyContent: "center",
     alignItems: "center"
   }

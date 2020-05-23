@@ -1,6 +1,14 @@
 import React from "react";
-import { Text, View, Dimensions, Image, StyleSheet } from "react-native";
+import {
+  Text,
+  View,
+  Dimensions,
+  Image,
+  StyleSheet,
+  TouchableOpacity
+} from "react-native";
 import Beit from "../assets/Beit.png";
+import { Actions } from "react-native-router-flux";
 let { height, width } = Dimensions.get("window");
 const SingleOrderUser = props => {
   const styles = StyleSheet.create({
@@ -24,14 +32,14 @@ const SingleOrderUser = props => {
     },
     data: {
       width: 0.725 * width,
-      height: 0.05 * height,
+      height: 0.1 * height,
       borderRadius: 35,
       backgroundColor: "#F7AE21",
       flexDirection: "row",
-      marginTop: (75 - 0.05 * height) / 2
+      marginTop: (75 - 0.1 * height) / 2
     },
     date: {
-      width: (0.725 * width) / 2 + 0.25 * ((0.725 * width) / 2),
+      // width: (0.725 * width) / 2 + 0.25 * ((0.725 * width) / 2),
       justifyContent: "center",
       marginLeft: 15
     },
@@ -42,7 +50,7 @@ const SingleOrderUser = props => {
     text: {
       color: "white",
       fontFamily: "Futura",
-      fontSize: 15,
+      fontSize: 12,
       fontWeight: "bold"
     },
     text1: {
@@ -54,29 +62,34 @@ const SingleOrderUser = props => {
       color: props.color,
       fontFamily: "Futura",
       fontSize: 15
+    },
+    text5: {
+      color: "white",
+      fontFamily: "Futura",
+      fontSize: 12,
+      fontWeight: "bold",
+      textAlign: props.lp
     }
   });
 
   return (
     <View style={styles.container}>
       <View style={styles.containerImage}>
-        <Image
+        <Text style={styles.text5}>{props.lolo}</Text>
+        {/* <Image
           resizeMethod="resize"
           resizeMode="contain"
           style={styles.image}
           source={Beit}
-        />
+        /> */}
       </View>
       <View style={styles.data}>
         <View style={styles.date}>
           <Text style={styles.text}>
             DATE: <Text style={styles.text1}>{props.date}</Text>
           </Text>
-        </View>
-
-        <View style={styles.paid}>
           <Text style={styles.text}>
-            PAID: <Text style={styles.text2}>{props.price}</Text>
+            DRIVER: <Text style={styles.text1}>{props.price}</Text>
           </Text>
         </View>
       </View>

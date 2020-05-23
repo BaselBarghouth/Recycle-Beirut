@@ -9,9 +9,10 @@ import HomeAdmin from "./HomeAdmin";
 import HomeDriver from "./HomeDriver";
 import Right from "./Right";
 export default function Home(props) {
-  let role = props.user.role_id,
-    user = props.user;
+  let role,
+    user = " props.user";
   let temp;
+  role = 1;
   switch (role) {
     case 1:
       temp = <HomeAdmin user={user} {...props} role={1} />;

@@ -9,12 +9,15 @@ import Clicked from "./Pages/Clicked";
 import Home from "./Pages/Home";
 import { Router, Scene } from "react-native-router-flux";
 import Signup from "./Pages/Signup";
+import Signup1 from "./Pages/Signup1";
+
 import Right from "./Pages/Right";
 import Swipe from "./Component/SingleUser";
 import Orders from "./Pages/Orders";
 import Users from "./Pages/Users";
 import History from "./Pages/History";
 import SingleOrderAdmin from "./Component/SingleOrderAdmin.js";
+import TT from "./Component/SingleUser";
 export default App = () => {
   const [login, setLogin] = useState(true);
   return (
@@ -46,6 +49,8 @@ export default App = () => {
           initial={false}
           component={Users}
         />
+        <Scene key="GG" hideNavBar={true} initial={false} component={Signup1} />
+        <Scene key="TT" hideNavBar={true} initial={false} component={TT} />
         <Scene
           key="History"
           hideNavBar={true}

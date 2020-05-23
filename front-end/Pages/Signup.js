@@ -9,8 +9,13 @@ import {
   Image,
   TouchableWithoutFeedback,
   Keyboard,
-  Modal
+  Modal,
+  CameraRoll
 } from "react-native";
+import Constants from "expo-constants";
+import * as Permissions from "expo-permissions";
+
+import * as ImagePicker from "expo-image-picker";
 import { Actions } from "react-native-router-flux";
 import Input from "../Component/Input";
 import Button from "../Component/Button";
@@ -27,14 +32,14 @@ class Signup extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      email: null,
-      password: null,
-      name: null,
-      confirmPassword: null,
-      phone: null,
-      location: null,
-      user_id: null,
-      role_id: null,
+      email: "",
+      password: "",
+      name: "",
+      confirmPassword: "",
+      phone: "",
+      location: "",
+      user_id: "",
+      role_id: "",
       region: {
         latitude: 33.88561240400549,
         longitude: 35.49511123451916,
@@ -56,6 +61,8 @@ class Signup extends Component {
     });
   };
   componentDidMount() {
+    this.getPermissionAsync();
+    console.log("hi");
     navigator.geolocation.getCurrentPosition(
       position => {
         const region = {
@@ -188,6 +195,29 @@ class Signup extends Component {
         .catch(err => console.log(err));
     }
   };
+  getPermissionAsync = async () => {
+    if (Constants.platform.ios) {
+      const { status } = await Permissions.askAsync(Permissions.CAMERA_ROLL);
+      if (status !== "granted") {
+        alert("Sorry, we need camera roll permissions to make this work!");
+      }
+    }
+  };
+
+  async getPhotosFromGallery() {
+    let result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.All,
+      allowsEditing: true,
+      aspect: [4, 3],
+      quality: 1
+    });
+
+    console.log(result);
+
+    if (!result.cancelled) {
+      this.setState({ image: result.uri });
+    }
+  }
   componentWillMount() {
     if (this.props.role) {
       let {
@@ -200,17 +230,20 @@ class Signup extends Component {
           role_id
         } = this.props.user,
         role = this.props.role;
-      this.setState({
-        isCreating: false,
-        name,
-        email,
-        location,
-        phone,
-        password,
-        role_id,
-        confirmPassword: password,
-        user_id
-      });
+      this.setState(
+        {
+          isCreating: false,
+          name,
+          email,
+          location,
+          phone,
+          password,
+          role_id,
+          confirmPassword: password,
+          user_id
+        },
+        () => console.log(this.state)
+      );
     }
   }
   render() {
@@ -379,7 +412,7 @@ class Signup extends Component {
                   }}
                 >
                   <TouchableOpacity
-                    onPress={() => this.setState({ isShow: true })}
+                    onPress={() => this.getPhotosFromGallery()}
                     style={styles.circle}
                   >
                     <Image
@@ -438,7 +471,7 @@ class Signup extends Component {
                       clicked={() => this.setState({ isShow: false })}
                     />
                     <Button
-                      color="#6BBD45"
+                      color="#B24444"
                       title="BACK"
                       textColor="white"
                       style={{ width: 0.725 * width }}
@@ -454,7 +487,7 @@ class Signup extends Component {
                 title={this.state.isCreating ? "CREATE ACCOUNT" : "SAVE"}
                 textColor="white"
                 style={{ width: 0.725 * width }}
-                clicked={this.creatAccount}
+                clicked={Actions.Home}
               />
             </View>
           </View>

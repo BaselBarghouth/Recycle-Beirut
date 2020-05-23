@@ -7,7 +7,8 @@ import {
   StyleSheet,
   TouchableOpacity,
   Modal,
-  Linking
+  Linking,
+  Alert
 } from "react-native";
 import Beit from "../assets/Beit.png";
 import location from "../assets/locationsign.png";
@@ -18,25 +19,12 @@ const SingleOrderAdmin = props => {
   const [user, setUser] = useState({ name: "", phone: "", location: "" });
   const [order, setOrder] = useState("");
   const [count, setCount] = useState(0);
-  useEffect(() => {
-    setOrder(props.order);
-    let temp = props.order,
-      user_id = temp.user_id,
-      user1 = fetch(`http://192.168.1.107:5001/users/${user_id}`, {
-        method: "get",
-        headers: {
-          "Content-Type": "application/json"
-        }
-      })
-        .then(response => response.json())
-        .then(data => setUser(data.data[0]))
-        .catch(err => console.log("err", err));
-  }, [count]);
 
   return (
     <View style={{ marginTop: 50 }}>
       <View style={styles.container}>
         <TouchableOpacity
+          style={{ marginLeft: 10 }}
           onPress={() => {
             setIsShow(true);
           }}
@@ -50,15 +38,34 @@ const SingleOrderAdmin = props => {
           />
         </TouchableOpacity>
         <View style={styles.data}>
-          <View style={styles.date}>
-            <Text style={styles.text}>NAME: {user.name}</Text>
-            <Text style={styles.text}>DATE: {order.order_date}</Text>
-            <Text style={styles.text}>PHONE: {user.phone}</Text>
-          </View>
+          <TouchableOpacity
+            onPress={() =>
+              Alert.alert(
+                "Thanks",
+                "Added to truck!",
+                [
+                  {
+                    text: "Ok",
+                    style: "default"
+                  }
+                ],
+                { cancelable: false }
+              )
+            }
+            style={styles.date}
+          >
+            <Text style={styles.text}>NAME: {props.name}</Text>
+            <Text style={styles.text}>DATE: {props.date}</Text>
+            <Text style={styles.text}>PHONE: {props.phone}</Text>
+          </TouchableOpacity>
 
           <View style={styles.paid}>
             <TouchableOpacity
-              onPress={() => Linking.openURL(`http://${user.location}`)}
+              onPress={() =>
+                Linking.openURL(
+                  "https://www.google.com/maps/search/?api=1&query=33.896062, 35.479283"
+                )
+              }
               style={styles.location}
             >
               <Image
@@ -94,7 +101,7 @@ const SingleOrderAdmin = props => {
 export default SingleOrderAdmin;
 const styles = StyleSheet.create({
   container: {
-    marginTop: 10,
+    marginTop: 1,
     flexDirection: "row",
     justifyContent: "space-evenly",
     alignItems: "center",
@@ -118,11 +125,13 @@ const styles = StyleSheet.create({
     height: 100,
     borderRadius: 35,
     backgroundColor: "#F7AE21",
-    flexDirection: "row"
+    flexDirection: "row",
+    justifyContent: "space-around"
   },
   date: {
     width: (0.725 * width) / 2 + 0.3 * ((0.725 * width) / 2),
-    justifyContent: "center"
+    justifyContent: "center",
+    marginLeft: 11
   },
   paid: {
     width: (0.725 * width) / 2 - 0.3 * ((0.725 * width) / 2),
@@ -131,7 +140,7 @@ const styles = StyleSheet.create({
   text: {
     color: "white",
     fontFamily: "Futura",
-    fontSize: 18,
+    fontSize: 17,
     fontWeight: "bold"
   },
   location: {
@@ -140,7 +149,8 @@ const styles = StyleSheet.create({
     borderRadius: 75 / 2,
     backgroundColor: "#008D78",
     justifyContent: "center",
-    alignItems: "center"
+    alignItems: "center",
+    marginLeft: 15
   },
   imageModal: {
     height: height - 100,

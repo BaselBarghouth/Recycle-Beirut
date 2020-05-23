@@ -88,7 +88,7 @@ class HomeAdmin extends Component {
           <View style={styles.button}>
             <Button
               color="#F7AE21"
-              title="PlACE TRUCK"
+              title="PLACE TRUCK"
               clicked={Actions.Orders}
               textColor="white"
               style={{ width: 0.7 * width }}
@@ -96,7 +96,7 @@ class HomeAdmin extends Component {
             <Button
               color="#F7AE21"
               title="EDIT USERS"
-              clicked={Actions.Users}
+              clicked={Actions.TT}
               textColor="white"
               style={{ width: 0.7 * width }}
             />

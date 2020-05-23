@@ -1,10 +1,10 @@
 {
   "devToolsPort": 19002,
-  "expoServerPort": 19000,
-  "packagerPort": 19001,
-  "packagerPid": 4283,
-  "expoServerNgrokUrl": "https://cf-xg4.anonymous.front-end.exp.direct",
-  "packagerNgrokUrl": "https://packager.cf-xg4.anonymous.front-end.exp.direct",
-  "ngrokPid": 4339,
+  "expoServerPort": null,
+  "packagerPort": null,
+  "packagerPid": null,
+  "expoServerNgrokUrl": null,
+  "packagerNgrokUrl": null,
+  "ngrokPid": null,
   "webpackServerPort": null
 }
